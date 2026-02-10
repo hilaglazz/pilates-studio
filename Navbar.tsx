@@ -1,9 +1,10 @@
 "use client";
 
-import React , {useState} from "react";
+import Link from "next/link";
+import React from "react";
 
 const links = [
-  { href: "/home", label: "בית" },
+  { href: "/", label: "בית" },
   { href: "/about", label: "אודות" },
   { href: "/classes", label: "שיעורים" },
   { href: "/pricing", label: "מחירון" },
@@ -19,14 +20,16 @@ export default function Navbar() {
       <nav className="flex items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8 flex-row-reverse">
         {/* Logo / Brand */}
         <div className="flex items-center gap-2">
-          <div className="h-16 w-16 rounded-full bg-brand-primary-soft/20 border border-brand-primary-soft flex items-center justify-center">
-            <span className="px-2 text-[10px] font-semibold leading-tight text-center text-brand-primary">
-             עונג של פילאטיס
+          <Link href="/" className="flex items-center gap-2">
+            <div className="h-16 w-16 rounded-full bg-brand-primary-soft/20 border border-brand-primary-soft flex items-center justify-center">
+              <span className="px-2 text-[10px] font-semibold leading-tight text-center text-brand-primary">
+                עונג של פילאטיס
+              </span>
+            </div>
+            <span className="hidden text-base font-semibold tracking-tight sm:inline">
+              סטודיו פילאטיס
             </span>
-          </div>
-          <span className="hidden text-base font-semibold tracking-tight sm:inline">
-            סטודיו פילאטיס
-          </span>
+          </Link>
         </div>
 
         {/* Desktop nav */}
@@ -34,21 +37,21 @@ export default function Navbar() {
           <ul className="flex items-center gap-6 text-sm">
             {links.map((link) => (
               <li key={link.href}>
-                <a
+                <Link
                   href={link.href}
                   className="transition-colors hover:text-brand-primary-soft"
                 >
                   {link.label}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
-          <a
-            href="#booking"
+          <Link
+            href="/#booking"
             className="inline-flex items-center justify-center rounded-full border border-brand-accent px-5 py-2 text-sm font-medium text-brand-accent bg-transparent transition-all duration-300 hover:bg-brand-accent hover:text-white"
           >
             קביעת שיעור
-          </a>
+          </Link>
         </div>
 
         {/* Mobile menu button */}
@@ -88,23 +91,23 @@ export default function Navbar() {
             <ul className="flex flex-col items-stretch gap-2 text-sm text-brand-dark">
               {links.map((link) => (
                 <li key={link.href}>
-                  <a
+                  <Link
                     href={link.href}
                     className="flex w-full justify-between rounded-lg px-3 py-2 transition-colors hover:bg-brand-bg"
                     onClick={() => setIsOpen(false)}
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
-            <a
-              href="#booking"
+            <Link
+              href="/#booking"
               className="mt-3 flex w-full items-center justify-center rounded-full bg-brand-primary px-5 py-2 text-sm font-medium text-white shadow-sm transition hover:bg-brand-primary-soft"
               onClick={() => setIsOpen(false)}
             >
               קביעת שיעור
-            </a>
+            </Link>
           </div>
         </div>
       )}
