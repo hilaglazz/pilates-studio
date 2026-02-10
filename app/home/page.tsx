@@ -1,4 +1,8 @@
+import { redirect } from "next/navigation";
+
 export default function Home() {
+  redirect("/");
+  // Unreachable: `/home` should always redirect to `/`.
   return (
     <main className="min-h-[calc(100vh-4rem)] bg-brand-bg">
       <section className="relative min-h-[80vh] flex items-center px-4 py-20 sm:px-6 lg:px-8 bg-brand-bg">
